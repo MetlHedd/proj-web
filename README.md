@@ -1,5 +1,5 @@
 Breno Alves de Sousa - 11345555 <br>
-Johnny Molotov - <br>
+Johnny Batista da Silva - <br>
 Yure Pablo do Nascimento Oliveira - 11275317 <br> <br>
 
 Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web

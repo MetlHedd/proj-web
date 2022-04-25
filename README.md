@@ -73,6 +73,8 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 
 ![User Diagram](https://user-images.githubusercontent.com/48031838/165000645-f153655b-f072-4489-808c-1010eee2d470.png)
 
+<p> O protótipo completo encontra-se no <a href = "https://www.figma.com/file/1atp6XQcNMWrqXp3FoA6Nc/Store?node-id=0%3A1"> Figma</a>. </p>
+
 <p> As informações que serão salvas no servidor se referem ao cadastro do usuário e aos dados do rolê, esses apresentados na seção de requisitos. 
   Também serão salvos todos os pedidos realizados pelo usuário (ingressos comprados). </p>
 

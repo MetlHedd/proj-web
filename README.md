@@ -54,13 +54,13 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 
 <p> O sistema começa com uma tela inicial que apresenta os rolês principais patrocinados, 
   algumas categorias e uma lista de rolês para o cliente interagir. Além disso, no <i>header</i> 
-  é possível migrar para a tela de cadastro, tela de login, lista completa de rolês com possibilidade de filtrar ou ordenar, 
+  é possível migrar para a tela de cadastro, tela de login, lista completa de rolês, 
   tela de histórico de ingressos comprados, tela de perfil e tela do carrinho.</p>
 
 <ul>
   <li><b>Tela de Cadastro</b>: Nesta tela o usuário consegue se registrar apresentando nome, CPF, data de nascimento, id, endereço, telefone, email e senha.</li>
   <li><b>Tela de Login</b>: O usuário consegue entrar na sua conta apresentando email e senha.</li>
-  <li><b>Tela de Rolês</b>: É possível ver uma lista vertical de rolês, podendo ordenar ou filtrar a lista. 
+  <li><b>Tela de Rolês</b>: É possível ver uma lista vertical de rolês. 
     Ao clicar no rolê é possível ver a descrição completa do rolê em outra tela.</li>
   <li><b>Tela de Descrição do Rolê</b>: É a tela que apresenta todas as informações sobre o rolê, e possui o botão de adicionar ingressos ao carrinho.</li>
   <li><b>Tela de Carrinho</b>: Nesta tela é possível ver todos os pedidos realizados e finalizar a compra.</li>

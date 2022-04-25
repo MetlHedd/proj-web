@@ -50,7 +50,7 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 </ul>
 </p>
 
-##Descrição do projeto
+## Descrição do projeto
 
 <p> O sistema começa com uma tela inicial que apresenta os rolês principais patrocinados, 
   algumas categorias e uma lista de rolês para o cliente interagir. Além disso, no <i>header</i> 
@@ -74,7 +74,7 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 ![User Diagram](https://user-images.githubusercontent.com/48031838/165000645-f153655b-f072-4489-808c-1010eee2d470.png)
 
 <p> As informações que serão salvas no servidor se referem ao cadastro do usuário e aos dados do rolê, esses apresentados na seção de requisitos. 
-  Também serão salvos todos os pedidos realizados pelo usuário (ingressos comprados). </p><br>
+  Também serão salvos todos os pedidos realizados pelo usuário (ingressos comprados). </p>
 
 ## Comentários sobre o código
 

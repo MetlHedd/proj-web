@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="dist/output.css" rel="stylesheet">
     <title> Role.com </title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   
-  <body>
+  <body class="m-0 flex min-h-screen flex-col" style="background-color: #E61997;">
     <!---Header-->
-    <nav>
-      <div class="items">
-        <div class="flex-grow">
+    <nav class="text-white p-3 flex gap-8 justify-between items-center w-full">
+      <div class="px-6 grow flex text-center">
+        <div class="grow">
           <a href="./index.html">
             Início
           </a>
         </div>
           
-        <div class="flex-grow">
+        <div class="grow">
           <a href="./produtos.html">
             Rolês
           </a>
@@ -26,31 +27,31 @@
       </div>
 
       <!---Logo-->
-      <div id="brand">
+      <div class="outline-4 outline-double p-2" style="outline-color: #cffbff;">
         <a href="./index.html">
-          <div class="logo-main">
+          <div class="font-bold text-6xl text-center" style="color: #5e17eb;">
             ROLE
           </div>
-          <div class="logo-sub">
+          <div class="font-serif text-center text-2xl text-white" style="text-shadow: 0px 0px 13px rgba(255, 255, 255, 1);">
             .com
           </div>
         </a>
       </div>
 
-      <div class="items">
-        <div class="flex-grow">
+      <div class="px-6 grow flex text-center">
+        <div class="grow">
           <a href="#">
             Ingressos
           </a>
         </div>
 
-        <div class="flex-grow">
+        <div class="grow">
           <a href="#">
             Minha Conta
           </a>
         </div>
 
-        <div class="flex-grow">
+        <div class="grow">
           <a href="#">
             Carrinho
           </a>
@@ -59,21 +60,21 @@
     </nav>
 
     <!--Descrição do evento-->
-    <div class="hr"></div>
+    <div class="py-3"></div>
 
-    <div id = "content">
+    <div class="grow">
       <!--Imagem do evento-->
-      <div class="event-full"></div>
+      <div class="bg-center bg-cover bg-local justify-center items-center h-96" style="background-image: url('./images/main-event.png');"></div>
       
       <!--Informações-->
-      <div class="event-description">
+      <div class="px-32 py-4 mx-auto bg-white">
         <div>
-          <h2>
+          <h2 class="text-center text-4xl font-bold">
             Tusca
           </h2>
           
-          <div>
-            <div class="flex-grow list">
+          <div class="flex flex-row">
+            <div class="grow my-4" style="color: #E61997;">
               <ul>
                 <li>
                   Open Bar
@@ -90,7 +91,7 @@
               </ul>
             </div>
             
-            <div class="list">
+            <div class="my-4" style="color: #E61997;">
               <ul>
                 <li>
                   Pabllo Vittar
@@ -107,9 +108,15 @@
               </ul>
             </div>
           </div>
+
+          <div class="py-4">
+            <div class="w-full border-t border-gray-300">
+
+            </div>
+          </div>
           
-          <div>
-            <div class="flex-grow">
+          <div class="flex flex-row">
+            <div class="grow">
               <div>
                 16:00 às 23hrs
               </div>
@@ -120,12 +127,12 @@
             </div>
             
             <div>
-              <h2 class="price">
+              <h2 class="font-bold text-4xl">
                 $59
               </h2>
               
               <div>
-                <input class = "buyButton" type="button" value="Comprar">
+                <input class="text-white justify-center p-2 rounded my-2 cursor-pointer" type="button" value="Comprar" style="background-color: #5E17EB;">
               </div>
             </div>  
           </div>
@@ -133,11 +140,11 @@
       </div>
     </div>
 
-    <footer>
-      <div>
-        <div id="brand">
+    <footer class="text-white text-center p-12 bg-black">
+      <div class="flex justify-center items-center">
+        <div class="basis-1/4">
           <div>
-            <span>
+            <span class="font-bold text-2xl" style="background-color: #E61997;">
               ROLE.COM
             </span>
           </div>
@@ -147,8 +154,8 @@
           </div>
         </div>
 
-        <div id="links">
-          <div>
+        <div class="grow">
+          <div class="flex gap-8 justify-center items-center">
             <div>
               <div class="font-bold">
                 EXEMPLO DE PAINEL DE LINKS

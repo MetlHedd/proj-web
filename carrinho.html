@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="dist/output.css" rel="stylesheet" />
+    <title>Role.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body
+    class="m-0 flex min-h-screen flex-col"
+    style="background-color: #e61997;"
+  >
+    <!---Header-->
+    <nav class="text-white p-3 flex gap-8 justify-between items-center w-full">
+      <div class="px-6 grow flex text-center">
+        <div class="grow">
+          <a href="./index.html">
+            Início
+          </a>
+        </div>
+
+        <div class="grow">
+          <a href="./produtos.html">
+            Rolês
+          </a>
+        </div>
+      </div>
+
+      <!---Logo-->
+      <div class="outline-4 outline-double p-2" style="outline-color: #cffbff;">
+        <a href="./index.html">
+          <div class="font-bold text-6xl text-center" style="color: #5e17eb;">
+            ROLE
+          </div>
+          <div
+            class="font-serif text-center text-2xl text-white"
+            style="text-shadow: 0px 0px 13px rgba(255, 255, 255, 1);"
+          >
+            .com
+          </div>
+        </a>
+      </div>
+
+      <div class="px-6 grow flex text-center">
+        <div class="grow">
+          <a href="#">
+            Ingressos
+          </a>
+        </div>
+
+        <div class="grow">
+          <a href="#">
+            Minha Conta
+          </a>
+        </div>
+
+        <div class="grow">
+          <a href="#">
+            Carrinho
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="py-3"></div>
+
+    <div class="grow flex flex-col gap-8 justify-center items-center p-8">
+      <div class="bg-white w-full p-8">
+        <div class="flex flex-col gap-2">
+          <div
+            class="bg-center bg-local bg-cover flex flex-col justify-center items-center text-4xl h-48"
+            style="background-image: url('./images/main-event.png');"
+          >
+            
+          </div>
+          <div class="text-center font-bold text-4xl">
+            Tusca
+          </div>
+          <div class="flex flex-row gap-4">
+            <div class="font-bold">
+              Quantidade:
+            </div>
+            <div>
+              <input type="number" id="quantity" name="quantity" min="1" max="5" value="1" class="w-12" />
+            </div>
+          </div>
+          <div class="justify-self-end self-end">
+            <span class="text-white rounded p-2 bg-red-400">
+              Remover do carrinho
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end items-end w-full">
+        <div class="bg-white p-8 flex flex-col gap-4">
+          <div class="font-bold text-4xl">
+            Total: R$300
+          </div>
+          <div>
+            <span class="text-white rounded p-2" style="background-color: #5e17eb;">
+              Fechar pedido
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-white text-center p-12 bg-black">
+      <div class="flex justify-center items-center">
+        <div class="basis-1/4">
+          <div>
+            <span class="font-bold text-2xl" style="background-color: #e61997;">
+              ROLE.COM
+            </span>
+          </div>
+
+          <div>
+            A sua central de rolês!
+          </div>
+        </div>
+
+        <div class="grow">
+          <div class="flex gap-8 justify-center items-center">
+            <div>
+              <div class="font-bold">
+                EXEMPLO DE PAINEL DE LINKS
+              </div>
+
+              <div>
+                <div>
+                  <a href="#">Link</a>
+                </div>
+                <div>
+                  <a href="#">Link</a>
+                </div>
+                <div>
+                  <a href="#">Link</a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="font-bold">
+                EXEMPLO DE PAINEL DE LINKS
+              </div>
+
+              <div>
+                <div>
+                  <a href="#">Link</a>
+                </div>
+                <div>
+                  <a href="#">Link</a>
+                </div>
+                <div>
+                  <a href="#">Link</a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="font-bold">
+                EXEMPLO DE PAINEL DE LINKS
+              </div>
+
+              <div>
+                <div>
+                  <a href="#">Link</a>
+                </div>
+                <div>
+                  <a href="#">Link</a>
+                </div>
+                <div>
+                  <a href="#">Link</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

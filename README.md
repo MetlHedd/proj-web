@@ -99,19 +99,19 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 
 <p> Clone o repositório: </p>
 
-'''bash
+```bash
 git clone https://github.com/MetlHedd/proj-web.git
-'''
+```
 
 <p> Instale as dependências (usando npm ou yarn): </p>
-'''bash
+```bash
 npm install
-'''
+```
 
 <p> Execute a aplicação: </p>
-'''bash
+```bash
 npm start
-'''
+```
 
 ## Problemas
 

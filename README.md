@@ -104,11 +104,13 @@ git clone https://github.com/MetlHedd/proj-web.git
 ```
 
 <p> Instale as dependências (usando npm ou yarn): </p>
+
 ```bash
 npm install
 ```
 
 <p> Execute a aplicação: </p>
+
 ```bash
 npm start
 ```

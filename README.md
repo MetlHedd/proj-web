@@ -73,6 +73,10 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 
 ![User Diagram](https://user-images.githubusercontent.com/48031838/165000645-f153655b-f072-4489-808c-1010eee2d470.png)
 
+<p> Abaixo é apresentado o diagrama de navegação do administrador. </p>
+
+![admin drawio (1)](https://user-images.githubusercontent.com/48031838/174663662-b54a13a1-7e46-404c-9fcf-ef767213c790.png)
+
 <p> O protótipo completo encontra-se no <a href = "https://www.figma.com/file/1atp6XQcNMWrqXp3FoA6Nc/Store?node-id=0%3A1"> Figma</a>. </p>
 
 <p> As informações que serão salvas no servidor se referem ao cadastro do usuário e aos dados do rolê, esses apresentados na seção de requisitos. 
@@ -81,6 +85,7 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 ## Comentários sobre o código
 
 <p>Os protótipos são realizados em HTML5 e CSS3. São implementadas três telas: tela de rolês, tela principal, e tela de descrição do rolê.</p>
+<p>O front-end é feito usando React e o CSS é montado com a ajuda do framework Tailwind. </p>
 
 ## Plano de Testes
 
@@ -92,7 +97,21 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 
 ## Procedimentos de Build
 
-<p>Em breve.</p>
+<p> Clone o repositório: </p>
+
+'''bash
+git clone https://github.com/MetlHedd/proj-web.git
+'''
+
+<p> Instale as dependências (usando npm ou yarn): </p>
+'''bash
+npm install
+'''
+
+<p> Execute a aplicação: </p>
+'''bash
+npm start
+'''
 
 ## Problemas
 

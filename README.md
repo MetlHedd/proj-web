@@ -112,7 +112,7 @@ npm install
 <p> Execute a aplicação: </p>
 
 ```bash
-npm dev
+npm run dev
 ```
 
 ## Problemas

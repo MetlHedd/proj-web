@@ -15,7 +15,7 @@ const leftItems = [
 const rightItems = [
   {
     label: "Ingressos",
-    url: "/tickets",
+    url: "/client/tickets",
   },
   {
     label: "Minha Conta",

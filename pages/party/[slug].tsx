@@ -50,7 +50,7 @@ export default function Party() {
             <div>
               <h2 className="font-bold text-4xl">${price}</h2>
               <div>
-                <Button label="Comprar" link="/cart" />
+                <Button label="Comprar" link="/client/cart" />
               </div>
             </div>
           </div>

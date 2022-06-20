@@ -3,7 +3,7 @@ import CartParty from "../../../components/cartParty";
 
 const items = [
   {
-    image: "./images/main_event.png",
+    image: "/images/main_event.png",
     name: "Tusca",
   },
 ];

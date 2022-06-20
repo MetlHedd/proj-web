@@ -9,11 +9,8 @@ interface Props {
 }
 
 function Element({ label, type, className, color }: Props) {
-  const elementClass = `text-white justify-center p-2 rounded my-2 cursor-pointer bg-${
-    color ? color : "purple"
-  }-600 hover:bg-${color ? color : "purple"}-700 border-${
-    color ? color : "purple"
-  }-900 border-b-4 transition text-center ${className ? className : ""}`;
+  let elementClass = "text-white justify-center p-2 rounded my-2 cursor-pointer border-b-4 transition text-center";
+  elementClass += ` bg-purple-600 hover:bg-purple-700 border-purple-900`;
 
   if (type === "span") {
     return <span className={elementClass}>{label}</span>;

@@ -85,7 +85,7 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 ## Comentários sobre o código
 
 <p>Os protótipos são realizados em HTML5 e CSS3. São implementadas três telas: tela de rolês, tela principal, e tela de descrição do rolê.</p>
-<p>O front-end é feito usando React e o CSS é montado com a ajuda do framework Tailwind. </p>
+<p>O front-end é feito usando React com Next.js e o CSS é montado com a ajuda do framework Tailwind. </p>
 
 ## Plano de Testes
 

@@ -1,28 +1,28 @@
+import { useState } from "react";
 import Button from "../components/button";
-import Categoria from "../components/categoria";
-
-const mainEventImage = "./images/main_event.png";
-
-const categories = [
-  {
-    title: "🔥",
-    description: "Em Alta",
-  },
-  {
-    title: "🏳️‍🌈",
-    description: "LGBTQIA+",
-  },
-  {
-    title: "📉",
-    description: "Na faixa",
-  },
-  {
-    title: "🍻",
-    description: "Open Bar",
-  },
-];
+import Categoria from "../components/categorie";
 
 export default function Home() {
+  const [mainEventImage, setMainEventImage] = useState("./images/main_event.png");
+  const [categories, setCategories] = useState([
+    {
+      title: "🔥",
+      description: "Em Alta",
+    },
+    {
+      title: "🏳️‍🌈",
+      description: "LGBTQIA+",
+    },
+    {
+      title: "📉",
+      description: "Na faixa",
+    },
+    {
+      title: "🍻",
+      description: "Open Bar",
+    },
+  ]);
+
   return (
     <>
       <div className="grow">

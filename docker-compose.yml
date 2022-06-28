@@ -1,0 +1,41 @@
+version: '3'
+services:
+  mongo:
+    image: "mongo:4.2"
+    restart: always
+    container_name: mongo
+    hostname: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mongopassword
+      MONGO_INITDB_DATABASE: db
+    ports:
+      - 27017:27017
+    volumes: 
+      - ./data:/data/db
+  
+  mongo-express:
+    image: mongo-express
+    restart: always
+    container_name: mongoexpress
+    hostname: mongoexpress
+    ports:
+      - 8834:8081
+    depends_on:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: mongopassword
+      ME_CONFIG_MONGODB_SERVER: mongo
+    volumes: 
+      - ./data:/data/db
+
+
+#  node:
+#    build: .
+#    container_name: node
+#    hostname: node
+#    ports:
+#      - "8830:3000"
+#    profiles:
+#      - donotstart

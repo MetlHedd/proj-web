@@ -30,7 +30,7 @@ export default function ({ image, name }: Props) {
         </div>
       </div>
       <div className="justify-self-end self-end">
-        <Button label="Remover do carrinho" />
+        <Button label="Remover do carrinho" color="red" />
       </div>
     </div>
   );

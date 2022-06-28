@@ -4,7 +4,7 @@ interface Props {
   items: NavItem[];
 }
 
-interface NavItem {
+export interface NavItem {
   label: string;
   url: string;
 }

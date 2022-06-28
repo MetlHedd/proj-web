@@ -1,8 +1,9 @@
-import Link from "next/link";
-import Items from "./items";
+import { useEffect, useState } from "react";
+import Items, { NavItem } from "./items";
 import Logo from "./logo";
+import axios from "axios";
 
-const leftItems = [
+const defaultLeftItems: NavItem[] = [
   {
     label: "Inicio",
     url: "/",
@@ -12,7 +13,17 @@ const leftItems = [
     url: "/parties",
   },
 ];
-const rightItems = [
+const defaultRightItems: NavItem[] = [
+  {
+    label: "Login",
+    url: "/login",
+  },
+  {
+    label: "Cadastre-se",
+    url: "/client/register",
+  },
+];
+const loggedInRightItems: NavItem[] = [
   {
     label: "Ingressos",
     url: "/client/tickets",
@@ -25,22 +36,57 @@ const rightItems = [
     label: "Carrinho",
     url: "/client/cart",
   },
+  {
+    label: "Sair da conta",
+    url: "/api/auth/logout",
+  },
 ];
+
+async function getNavbarItems(setRightItems: Function) {
+  let isLoggedIn = false;
+  let isAdmin = false;
+
+  try {
+    const response = await axios.get("/api/auth/login");
+
+    if (response.data.data.email) {
+      isLoggedIn = true;
+    }
+
+    if (response.data.data.admin) {
+      isAdmin = true;
+    }
+  } catch(e) {
+    // just continue
+  }
+  
+
+  if (isLoggedIn) {
+    setRightItems(loggedInRightItems);
+  } else {
+    setRightItems(defaultRightItems);
+  }
+}
 
 function Section({ items }) {
   return (
     <div className="grow flex flex-col">
-        <div className="px-6 grow flex text-center">
-          <Items items={items} />
-        </div>
-        <div className="border-b-2 h-2 rounded border-pink-400">
-          
-        </div>
+      <div className="px-6 grow flex text-center">
+        <Items items={items} />
       </div>
-  )
+      <div className="border-b-2 h-2 rounded border-pink-400"></div>
+    </div>
+  );
 }
 
 export default function Navbar() {
+  const [leftItems, setLeftItems] = useState(defaultLeftItems);
+  const [rightItems, setRightItems] = useState(defaultRightItems);
+
+  useEffect(() => {
+    getNavbarItems(setRightItems);
+  }, []);
+
   return (
     <nav className="text-white p-3 flex gap-8 justify-between items-center w-full">
       <Section items={leftItems} />

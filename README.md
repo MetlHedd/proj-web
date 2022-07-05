@@ -97,7 +97,9 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 
 ## Procedimentos de Build
 
-<p>Para fazer o processo de build é necessário ter o podman ou o docker instalado. Tendo ele instalado, siga as seguintes etapas:</p>
+Instale as seguintes dependências:
+- podman (ou docker)
+- podman-compose (ou docker compose)
 
 - Clone o repositório:
 ```bash
@@ -105,7 +107,7 @@ git clone https://github.com/MetlHedd/proj-web.git
 ```
 - Execute a aplicação:
 ```bash
-podman-compose up
+podman-compose up -d
 ```
 
 ## Problemas

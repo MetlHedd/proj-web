@@ -14,9 +14,9 @@ export default function Items({ items }: Props) {
     <>
       {items.map((item: NavItem) => {
         return (
-          <div className="grow" key={`${item.label}-${item.url}`}>
+          <div className="grow p-4" key={`${item.label}-${item.url}`}>
             <Link href={item.url}>
-              <span className="hover:underline cursor-pointer">
+              <span className="hover:underline cursor-pointer border-b-2 border-t-2 border-pink-200 rounded p-2 hover:border-pink-400">
                 {item.label}
               </span>
             </Link>

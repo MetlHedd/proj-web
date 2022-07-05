@@ -1,19 +1,45 @@
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import Button from "../../components/button";
 
-const imageUrl: string = "/images/main_event.png";
-const title: string = "Tusca";
-const tags: string[] = ["Open Bar", "Funk, pagode", "LGBQIA+", "Oasis Eventos"];
-const lineup: string[] = [
-  "Pabllo Vittar",
-  "Pedro Sampaio",
-  "Kevin o Chris",
-  "MC LAN",
-];
-const time: string = "16:00 às 23hrs";
-const date: string = "27/08";
-const price: string = "59";
-
 export default function Party() {
+  const router = useRouter();
+  
+  const [imageUrl, setImageUrl] = useState("");
+  const [title, setTitle] = useState("");
+  const [tags, setTags] = useState([]);
+  const [lineup, setLineup] = useState([]);
+  const [hours, setHours] = useState("");
+  const [date, setDate] = useState("");
+  const [price, setPrice] = useState("");
+
+  useEffect(() => {
+    const asyncFunc = async () => {
+      if (!router.isReady) {
+        return;
+      }
+
+      try {
+        const response = await axios.post("/api/party/get", {
+          name: router.query.slug,
+        });
+
+        setImageUrl(response.data.data.image);
+        setTitle(response.data.data.name);
+        setTags(response.data.data.tags.split(","));
+        setLineup(response.data.data.lineup.split(","));
+        setHours(response.data.data.hours);
+        setDate(response.data.data.date);
+        setPrice(response.data.data.price);
+      } catch(e) {
+        router.push("/");
+      }
+    }
+
+    asyncFunc();
+  }, [router.isReady]);
+
   return (
     <>
       <div
@@ -44,7 +70,7 @@ export default function Party() {
           </div>
           <div className="flex flex-row">
             <div className="grow">
-              <div>{time}</div>
+              <div>{hours}</div>
               <div>{date}</div>
             </div>
             <div>

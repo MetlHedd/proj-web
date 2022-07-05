@@ -1,30 +1,10 @@
+import axios from "axios";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import Button from "../../../../components/button";
 import Input from "../../../../components/input";
+import Modal from "../../../../components/modal";
 import { createState } from "../../../../utils/state";
-
-function ChangeImage({ image }: { image: string }) {
-  if (image !== "") {
-    return (
-      <div
-        className="border border-dashed w-32 h-32 text-white font-bold text-xl rounded-full flex self-center justify-self-center cursor-pointer bg-cover"
-        style={{ backgroundImage: `url("${image}")` }}
-      >
-        <div className="self-center justify-self-center grow text-center">
-          Editar foto
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="border border-dashed w-32 h-32 text-white font-bold text-xl rounded-full flex self-center justify-self-center cursor-pointer hover:bg-purple-600">
-      <div className="self-center justify-self-center grow text-center">
-        Adicionar foto
-      </div>
-    </div>
-  );
-}
 
 function InputDiv({ placeholder, type, state }) {
   return (
@@ -38,7 +18,7 @@ function InputDiv({ placeholder, type, state }) {
 }
 
 export default function Add() {
-  const [eventImage, setEventImage] = useState("");
+  const router = useRouter();
   const inputs = [
     {
       placeholder: "Nome do rolê",
@@ -51,7 +31,17 @@ export default function Add() {
       state: createState(""),
     },
     {
+      placeholder: "Imagem do rolê",
+      type: "text",
+      state: createState(""),
+    },
+    {
       placeholder: "Tags (separada por virgula)",
+      type: "text",
+      state: createState(""),
+    },
+    {
+      placeholder: "Lineup (separada por virgula)",
       type: "text",
       state: createState(""),
     },
@@ -61,30 +51,80 @@ export default function Add() {
       state: createState(""),
     },
     {
+      placeholder: "Horário",
+      type: "text",
+      state: createState(""),
+    },
+    {
       placeholder: "Local",
       type: "text",
       state: createState(""),
     },
+    {
+      placeholder: "Preço",
+      type: "number",
+      state: createState(""),
+    },
+    {
+      placeholder: "Tickets disponíveis",
+      type: "text",
+      state: createState(""),
+    },
   ];
+  const [modalToggle, setModalToggle] = useState(0);
+  const [requestError, setRequestError] = useState("");
+
+  const send = async () => {
+    try {
+      const response = await axios.post("/api/party/add", {
+        name: inputs[0].state.value,
+        description: inputs[1].state.value,
+        image: inputs[2].state.value,
+        tags: inputs[3].state.value,
+        lineup: inputs[4].state.value,
+        date: inputs[5].state.value,
+        hours: inputs[6].state.value,
+        address: inputs[7].state.value,
+        price: inputs[8].state.value,
+        ticketsAvalaible: inputs[9].state.value,
+      });
+
+      router.push(`/party/${response.data.data.name}`);
+    } catch (e) {
+      setRequestError(JSON.stringify(e.response.data));
+      setModalToggle(new Date().getTime());
+    }
+  };
 
   return (
     <div className="flex flex-col justify-center items-center p-8 w-full">
       <div className="p-8 flex flex-col gap-4 w-full">
         <div className="text-white text-4xl text-center">Adicionar rolê</div>
-        <ChangeImage image={eventImage} />
         <div className="flex flex-row w-full gap-12">
           <InputDiv {...inputs[0]} />
           <InputDiv {...inputs[1]} />
+          <InputDiv {...inputs[2]} />
         </div>
         <div className="flex flex-row w-full gap-12">
-          <InputDiv {...inputs[2]} />
           <InputDiv {...inputs[3]} />
           <InputDiv {...inputs[4]} />
         </div>
+        <div className="flex flex-row w-full gap-12">
+          <InputDiv {...inputs[5]} />
+          <InputDiv {...inputs[6]} />
+          <InputDiv {...inputs[7]} />
+        </div>
+        <div className="flex flex-row w-full gap-12">
+          <InputDiv {...inputs[8]} />
+          <InputDiv {...inputs[9]} />
+        </div>
         <div className="text-xl font-bold self-center justify-self-center">
-          <Button label="Adicionar" />
+          <Button label="Adicionar" click={send} />
         </div>
       </div>
+      <Modal toggle={modalToggle}>
+        {requestError}
+      </Modal>
     </div>
   );
 }

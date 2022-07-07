@@ -14,6 +14,6 @@ const PartySchema = new mongoose.Schema({
   ticketsAvalaible: { type: Number, default: 0 },
 });
 
-const Party = mongoose.models.Party || mongoose.model("Party", PartySchema);
+export const Party = mongoose.models.Party || mongoose.model("Party", PartySchema);
 
 export default Party;

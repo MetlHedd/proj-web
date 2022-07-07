@@ -13,6 +13,6 @@ const UserSchema = new Schema({
 
 // PASSWORD hash: https://stackoverflow.com/questions/14588032/mongoose-password-hashing
 
-const User = models.User || model("User", UserSchema);
+export const User = models.User || model("User", UserSchema);
 
 export default User;

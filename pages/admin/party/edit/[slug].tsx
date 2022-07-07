@@ -98,13 +98,9 @@ export default function Edit() {
 
   useEffect(() => {
     const asyncFunc = async () => {
-      console.log(router.isReady);
-
       if (!router.isReady) {
         return;
       }
-
-      console.log("aaa");
 
       try {
         const response = await axios.post("/api/party/get", {

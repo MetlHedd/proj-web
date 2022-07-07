@@ -1,11 +1,19 @@
+import { Dispatch, SetStateAction, useState } from "react";
+import { CartItem } from "../../utils/cart";
 import Button from "../button";
 
-interface Props {
-  image: string;
-  name: string;
+interface Props extends CartItem {
+  handleRemove: any;
+  handleChangeQuantity: any;
 }
 
-export default function ({ image, name }: Props) {
+export default function ({ image, name, quantity, handleRemove, handleChangeQuantity, price }: Props) {
+  const [quantityState, setQuantityState] = useState(quantity);
+
+  const handleQuantityUpdate = (event: { target: { value: string; }; }) => {
+    handleChangeQuantity(name, parseInt(event.target.value));
+  }
+
   return (
     <div className="flex flex-col gap-2">
       <div
@@ -23,14 +31,23 @@ export default function ({ image, name }: Props) {
             id="quantity"
             name="quantity"
             min={1}
-            max={5}
-            defaultValue={1}
+            max={100}
+            value={quantity}
             className="w-12"
+            onChange={handleQuantityUpdate}
           />
+        </div>
+        <div className="flex flex-row gap-2">
+          <div className="font-bold">
+            Preço unitário: 
+          </div>
+          <div>
+            ${price}
+          </div>
         </div>
       </div>
       <div className="justify-self-end self-end">
-        <Button label="Remover do carrinho" color="red" />
+        <Button label="Remover do carrinho" color="red" click={handleRemove} />
       </div>
     </div>
   );

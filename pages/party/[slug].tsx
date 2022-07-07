@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Button from "../../components/button";
+import createCart from "../../utils/cart";
 
 export default function Party() {
   const router = useRouter();
@@ -12,7 +13,7 @@ export default function Party() {
   const [lineup, setLineup] = useState([]);
   const [hours, setHours] = useState("");
   const [date, setDate] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     const asyncFunc = async () => {
@@ -39,6 +40,20 @@ export default function Party() {
 
     asyncFunc();
   }, [router.isReady]);
+
+  const cart = createCart();
+
+  const handleAdd = () => {
+
+    cart.handleAdd({
+      image: imageUrl,
+      name: title,
+      price: price,
+      quantity: 1,
+    });
+
+    router.push("/client/cart");
+  }
 
   return (
     <>
@@ -76,7 +91,7 @@ export default function Party() {
             <div>
               <h2 className="font-bold text-4xl">${price}</h2>
               <div>
-                <Button label="Comprar" link="/client/cart" />
+                <Button label="Comprar" click={handleAdd} />
               </div>
             </div>
           </div>

@@ -34,5 +34,13 @@ export default function Modal() {
     setVisible(true);
   };
 
-  return { element, showModal };
+  const setModalText = (text: any) => {
+    setText(text);
+  }
+
+  return {
+    element,
+    showModal,
+    setModalText,
+  };
 }

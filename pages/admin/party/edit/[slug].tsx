@@ -72,8 +72,7 @@ export default function Edit() {
       state: createState(""),
     },
   ];
-  const [modalToggle, setModalToggle] = useState(0);
-  const [requestError, setRequestError] = useState("");
+  const modal = Modal();
 
   const send = async () => {
     try {
@@ -92,8 +91,7 @@ export default function Edit() {
 
       router.push(`/party/${response.data.data.name}`);
     } catch (e) {
-      setRequestError(JSON.stringify(e.response.data));
-      setModalToggle(new Date().getTime());
+      modal.showModal(JSON.stringify(e.response.data));
     }
   };
 
@@ -152,9 +150,7 @@ export default function Edit() {
           <Button label="Adicionar" click={send} />
         </div>
       </div>
-      <Modal toggle={modalToggle}>
-        {requestError}
-      </Modal>
+      {modal.element}
     </div>
   );
 }

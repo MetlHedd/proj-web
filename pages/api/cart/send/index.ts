@@ -50,16 +50,16 @@ export default async function handler(
 
         if (canBuy) {
           for (const item of body.items) {
+            const party = await PartySchema.findOne({
+              name: item.name,
+            });
+
+            party.ticketsAvalaible -= item.quantity;
+            party.ticketsSold += item.quantity;
+
+            await party.save();
+
             for (let i = 0; i < item.quantity; i++) {
-              const party = await PartySchema.findOne({
-                name: item.name,
-              });
-
-              party.ticketsAvalaible -= item.quantity;
-              party.ticketsSold += item.quantity;
-
-              await party.save();
-
               await TicketSchema.create({
                 party: party._id,
                 user: userData._id,

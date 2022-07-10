@@ -5,6 +5,7 @@ interface Props {
   type: string;
   state: State;
   disabled?: boolean;
+  focusColor?: "white" | "black";
 }
 
 interface State {
@@ -12,7 +13,7 @@ interface State {
   set: Dispatch<SetStateAction<string>>;
 }
 
-export default function Input({ placeholder, type, state, disabled }: Props) {
+export default function Input({ placeholder, type, state, disabled, focusColor }: Props) {
   const [focused, setFocues] = useState(false);
 
   const handleInputUpdate = (event) => {
@@ -33,6 +34,10 @@ export default function Input({ placeholder, type, state, disabled }: Props) {
       />
       {(() => {
         if (focused) {
+          if (focusColor === "black") {
+            return <span className="text-black font-bold">{placeholder}</span>;
+          }
+          
           return <span className="text-white font-bold">{placeholder}</span>;
         }
 

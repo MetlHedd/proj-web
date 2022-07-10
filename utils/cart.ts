@@ -69,6 +69,12 @@ export default function createCart() {
     setTotal(total);
   };
 
+  const getCart = () => {
+    return {
+      items: cart,
+    }
+  }
+
   return {
     cart,
     total,
@@ -76,5 +82,6 @@ export default function createCart() {
     handleRemove,
     handleChangeQuantity,
     handleClear,
+    getCart,
   };
 }

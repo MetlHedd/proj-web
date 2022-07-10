@@ -3,10 +3,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Button from "../../components/button";
 import createCart from "../../utils/cart";
+import { checkIsAdmin } from "../../utils/isAdmin";
 
 export default function Party() {
   const router = useRouter();
-  
+
   const [imageUrl, setImageUrl] = useState("");
   const [title, setTitle] = useState("");
   const [tags, setTags] = useState([]);
@@ -33,10 +34,10 @@ export default function Party() {
         setHours(response.data.data.hours);
         setDate(response.data.data.date);
         setPrice(response.data.data.price);
-      } catch(e) {
+      } catch (e) {
         router.push("/");
       }
-    }
+    };
 
     asyncFunc();
   }, [router.isReady]);
@@ -44,7 +45,6 @@ export default function Party() {
   const cart = createCart();
 
   const handleAdd = () => {
-
     cart.handleAdd({
       image: imageUrl,
       name: title,
@@ -53,7 +53,19 @@ export default function Party() {
     });
 
     router.push("/client/cart");
-  }
+  };
+
+  const [isUserAdmin, setIsUserAdmin] = useState(false);
+
+  useEffect(() => {
+    const asyncFunc = async () => {
+      if (await checkIsAdmin()) {
+        setIsUserAdmin(true);
+      }
+    };
+
+    asyncFunc();
+  }, []);
 
   return (
     <>
@@ -93,6 +105,34 @@ export default function Party() {
               <div>
                 <Button label="Comprar" click={handleAdd} />
               </div>
+              {(() => {
+                if (isUserAdmin) {
+                  return (
+                    <>
+                      <div>
+                        <Button
+                          label="Editar festa"
+                          click={() => {
+                            router.push(`/admin/party/edit/${router.query.slug}`);
+                          }}
+                          color="green"
+                        />
+                      </div>
+                      <div>
+                        <Button
+                          label="Remover festa"
+                          click={() => {
+                            router.push(`/api/party/remove/?name=${router.query.slug}`);
+                          }}
+                          color="red"
+                        />
+                      </div>
+                    </>
+                  );
+                }
+
+                return <></>;
+              })()}
             </div>
           </div>
         </div>

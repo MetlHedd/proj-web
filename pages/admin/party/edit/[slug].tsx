@@ -6,12 +6,12 @@ import Input from "../../../../components/input";
 import Modal from "../../../../components/modal";
 import { createState } from "../../../../utils/state";
 
-function InputDiv({ placeholder, type, state }) {
+function InputDiv({ placeholder, type, state, disabled }: any) {
   return (
     <div className="flex flex-col gap-2 grow">
       <div className="text-white text-xl">{placeholder}:</div>
       <div>
-        <Input placeholder={placeholder} type={type} state={state} />
+        <Input placeholder={placeholder} type={type} state={state} disabled={disabled} />
       </div>
     </div>
   );
@@ -24,6 +24,7 @@ export default function Edit() {
       placeholder: "Nome do rolê",
       type: "text",
       state: createState(""),
+      disabled: true,
     },
     {
       placeholder: "Descricao do rolê",

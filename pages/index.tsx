@@ -32,7 +32,7 @@ export default function Home() {
             style={{ backgroundImage: `url(${mainEventImage})` }}
           >
             <div className="flex-grow" />
-            <Button label="Comprar" link="/party/1" />
+            <Button label="Comprar" link="/party/Tusca" />
           </div>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import UserSchema from "../../../../lib/db/models/userSchema";
 import DbConnect from "../../../../lib/db/connect";
-import generateCookie from "../../../../lib/jwt/generateCookie";
 
 interface Body {
   name: string;

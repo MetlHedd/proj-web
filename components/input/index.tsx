@@ -4,6 +4,7 @@ interface Props {
   placeholder: string;
   type: string;
   state: State;
+  disabled?: boolean;
 }
 
 interface State {
@@ -11,7 +12,7 @@ interface State {
   set: Dispatch<SetStateAction<string>>;
 }
 
-export default function Input({ placeholder, type, state }: Props) {
+export default function Input({ placeholder, type, state, disabled }: Props) {
   const [focused, setFocues] = useState(false);
 
   const handleInputUpdate = (event) => {
@@ -28,6 +29,7 @@ export default function Input({ placeholder, type, state }: Props) {
         onChange={handleInputUpdate}
         onFocus={() => setFocues(true)}
         onBlur={() => setFocues(false)}
+        {...(disabled && { disabled })}
       />
       {(() => {
         if (focused) {

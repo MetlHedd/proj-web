@@ -3,15 +3,16 @@ import mongoose from "mongoose";
 const TicketSchema = new mongoose.Schema({
   party: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Party"
+    ref: "Party",
+    required: true,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
+    required: true,
   }
 });
 
-const exportModule =
-  mongoose.models.TicketSchema || mongoose.model("Ticket", TicketSchema);
+export const Ticket = mongoose.models.Ticket || mongoose.model("Ticket", TicketSchema);
 
-export default exportModule;
+export default Ticket;

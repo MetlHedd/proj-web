@@ -1,3 +1,4 @@
+import axios from "axios";
 import Button from "../../../components/button";
 import CartParty from "../../../components/cartParty";
 import createCart from "../../../utils/cart";
@@ -26,7 +27,7 @@ export default function Index() {
           Total: R${cart.total}
         </div>
         <div>
-          <Button label="Fechar pedido" link="/client/tickets" />
+          <Button label="Fechar pedido" link="/client/pay" />
         </div>
       </div>
     </div>

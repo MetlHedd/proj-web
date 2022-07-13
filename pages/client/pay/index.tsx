@@ -5,17 +5,14 @@ import Button from "../../../components/button";
 import Modal from "../../../components/modal";
 import createCart from "../../../utils/cart";
 import { checkIfisLogged } from "../../../utils/logged";
+import onlyAccesIfLoggedIn from "../../../utils/onlyLogged";
 
 export default function Index() {
   const router = useRouter();
   const cart = createCart();
   const modal = Modal();
 
-  useEffect(() => {
-    if (!checkIfisLogged()) {
-      router.push("/");
-    }
-  }, []);
+  onlyAccesIfLoggedIn();
 
   const send = async () => {
     try {

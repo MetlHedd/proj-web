@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Items, { NavItem } from "./items";
 import Logo from "./logo";
 import axios from "axios";
+import { checkIsAdmin } from "../../utils/isAdmin";
+import { checkIfisLogged } from "../../utils/logged";
 
 const defaultLeftItems: NavItem[] = [
   {
@@ -41,27 +43,17 @@ const loggedInRightItems: NavItem[] = [
     url: "/api/auth/logout",
   },
 ];
+const adminRightItems: NavItem[] = [
+  {
+    label: "Gestão de Usuários",
+    url: "/admin/user",
+  },
+];
 
 async function getNavbarItems(setRightItems: Function) {
-  let isLoggedIn = false;
-  let isAdmin = false;
-
-  try {
-    const response = await axios.get("/api/auth/login");
-
-    if (response.data.data.email) {
-      isLoggedIn = true;
-    }
-
-    if (response.data.data.admin) {
-      isAdmin = true;
-    }
-  } catch(e) {
-    // just continue
-  }
-  
-
-  if (isLoggedIn) {
+  if (await checkIsAdmin()) {
+    setRightItems([...adminRightItems, ...loggedInRightItems]);
+  } else if (await checkIfisLogged()) {
     setRightItems(loggedInRightItems);
   } else {
     setRightItems(defaultRightItems);

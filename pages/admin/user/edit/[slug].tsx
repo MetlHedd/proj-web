@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import Button from "../../../components/button";
-import Input from "../../../components/input";
-import onlyAccesIfLoggedIn from "../../../utils/onlyLogged";
-import { createState } from "../../../utils/state";
+import { useEffect, useState } from "react";
+import Button from "../../../../components/button";
+import Input from "../../../../components/input";
+import onlyAccesIfLoggedIn from "../../../../utils/onlyLogged";
+import { createState } from "../../../../utils/state";
 
 export default function Index() {
   const router = useRouter();
@@ -15,13 +15,19 @@ export default function Index() {
     { placeholder: "Data de nascimento", type: "date", state: createState("") },
     { placeholder: "Endereço", type: "text", state: createState("") },
     { placeholder: "Telefone", type: "text", state: createState("") },
-    { placeholder: "Email", type: "text", state: createState(""), disabled: true },
+    { placeholder: "Email", type: "text", state: createState("") },
     { placeholder: "Senha", type: "password", state: createState("") },
   ];
+  const [checkbox, setCheckbox] = useState(false);
   useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
+    const { slug } = router.query;
     const asynFunc = async () => {
       try {
-        const response = await axios.post("/api/user/get");
+        const response = await axios.post("/api/user/get", { email: slug });
         
         inputs[0].state.set(response.data.data.name);
         inputs[1].state.set(response.data.data.cpf);
@@ -30,13 +36,14 @@ export default function Index() {
         inputs[4].state.set(response.data.data.phone);
         inputs[5].state.set(response.data.data.email);
         inputs[6].state.set(response.data.data.password);
+        setCheckbox(response.data.data.admin);
       } catch(e) {
         router.push("/404");
       }
     }
 
     asynFunc();
-  }, []);
+  }, [router.isReady]);
   const send = async () => {
     try {
       const response = await axios.post("/api/user/edit",
@@ -48,6 +55,7 @@ export default function Index() {
         phone: inputs[4].state.value,
         email: inputs[5].state.value,
         password: inputs[6].state.value,
+        admin: checkbox,
       });
 
       if (response.status === 200) {
@@ -57,7 +65,7 @@ export default function Index() {
       
     }
   };
-  onlyAccesIfLoggedIn();
+  onlyAccesIfLoggedIn(true);
 
   return (
     <div className="flex justify-center items-center">
@@ -71,6 +79,14 @@ export default function Index() {
           {inputs.map((input, index) => (
             <Input key={index} {...input} />
           ))}
+          <div className="flex flex-row gap-2">
+            <div>
+              <input type="checkbox" onChange={() => setCheckbox(!checkbox)} checked={checkbox} />
+            </div>
+            <div className="text-white font-bold">
+              Is Admin?
+            </div>
+          </div>
         </div>
         <div className="justify-center items-center flex">
           <Button label="Cadastro" click={send} />

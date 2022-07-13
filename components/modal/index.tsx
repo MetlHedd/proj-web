@@ -10,7 +10,7 @@ export default function Modal() {
   if (visible) {
     element = (
       <div className="fixed break-all inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-        <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div className="relative top-20 mx-auto p-5 border w-2/4 shadow-lg rounded-md bg-white">
           <div className="flex flex-col justify-center items-center">
             <div>{text}</div>
             <div>

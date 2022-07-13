@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Button from "../../../../components/button";
 import Input from "../../../../components/input";
 import Modal from "../../../../components/modal";
+import onlyAccesIfLoggedIn from "../../../../utils/onlyLogged";
 import { createState } from "../../../../utils/state";
 
 function InputDiv({ placeholder, type, state, disabled }: any) {
@@ -123,6 +124,8 @@ export default function Edit() {
 
     asyncFunc();
   }, [router.isReady]);
+
+  onlyAccesIfLoggedIn(true);
 
   return (
     <div className="flex flex-col justify-center items-center p-8 w-full">

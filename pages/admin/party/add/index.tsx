@@ -4,6 +4,7 @@ import { useState } from "react";
 import Button from "../../../../components/button";
 import Input from "../../../../components/input";
 import Modal from "../../../../components/modal";
+import onlyAccesIfLoggedIn from "../../../../utils/onlyLogged";
 import { createState } from "../../../../utils/state";
 
 function InputDiv({ placeholder, type, state }) {
@@ -93,6 +94,7 @@ export default function Add() {
       modal.showModal(JSON.stringify(e.response.data));
     }
   };
+  onlyAccesIfLoggedIn(true);
 
   return (
     <div className="flex flex-col justify-center items-center p-8 w-full">

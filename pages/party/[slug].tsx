@@ -35,7 +35,7 @@ export default function Party() {
         setDate(response.data.data.date);
         setPrice(response.data.data.price);
       } catch (e) {
-        router.push("/");
+        router.push("/404");
       }
     };
 

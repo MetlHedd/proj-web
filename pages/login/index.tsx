@@ -3,10 +3,12 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Button from "../../components/button";
 import Input from "../../components/input";
+import Modal from "../../components/modal";
 import { createState } from "../../utils/state";
 
 export default function Index() {
   const router = useRouter();
+  const modal = Modal();
   const inputs = [
     {
       placeholder: "Email",
@@ -41,7 +43,7 @@ export default function Index() {
         router.reload();
       }
     } catch (e) {
-      router.push("/error?message=invalid credentials");
+      modal.showModal("Invalid Credentials");
     }
   };
 
@@ -73,6 +75,7 @@ export default function Index() {
         <div className="justify-center items-center flex">
           <Button label="Login" click={() => send()} />
         </div>
+        {modal.element}
       </div>
     </div>
   );

@@ -30,12 +30,3 @@ services:
     volumes: 
       - ./data:/data/db
 
-
-#  node:
-#    build: .
-#    container_name: node
-#    hostname: node
-#    ports:
-#      - "8830:3000"
-#    profiles:
-#      - donotstart

@@ -100,6 +100,8 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 Instale as seguintes dependências:
 - podman (ou docker)
 - podman-compose (ou docker compose)
+- nodejs
+- npm (ou yarn)
 
 - Clone o repositório:
 ```bash
@@ -108,7 +110,10 @@ git clone https://github.com/MetlHedd/proj-web.git
 - Execute a aplicação:
 ```bash
 podman-compose up -d
+npm run dev
 ```
+
+A aplicação poderá ser acessada com a url `http://localhost:8830`.
 
 ## Problemas
 

@@ -31,7 +31,7 @@ export default function Index() {
         inputs[5].state.set(response.data.data.email);
         inputs[6].state.set(response.data.data.password);
       } catch(e) {
-        router.push("/404");
+        // router.push("/404");
       }
     }
 

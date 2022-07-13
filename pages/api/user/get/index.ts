@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const decodedCookie = checkCookie(cookies.token || "");
       const body: Body = req.body;
 
-      if (decodedCookie.admin) {
+      if (decodedCookie.admin && body.email) {
         await DbConnect();
 
         const data = await UserSchema.findOne({

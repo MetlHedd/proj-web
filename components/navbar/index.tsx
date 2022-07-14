@@ -48,6 +48,10 @@ const adminRightItems: NavItem[] = [
     label: "Gestão de Usuários",
     url: "/admin/user",
   },
+  {
+    label: "Adicionar novo rolê",
+    url: "/admin/party/add",
+  },
 ];
 
 async function getNavbarItems(setRightItems: Function) {

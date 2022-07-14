@@ -15,6 +15,7 @@ export default function Party() {
   const [hours, setHours] = useState("");
   const [date, setDate] = useState("");
   const [price, setPrice] = useState(0);
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
     const asyncFunc = async () => {
@@ -34,6 +35,7 @@ export default function Party() {
         setHours(response.data.data.hours);
         setDate(response.data.data.date);
         setPrice(response.data.data.price);
+        setDescription(response.data.data.description);
       } catch (e) {
         router.push("/404");
       }
@@ -91,6 +93,9 @@ export default function Party() {
                 })}
               </ul>
             </div>
+          </div>
+          <div>
+            {description}
           </div>
           <div className="py-4">
             <div className="w-full border-t border-gray-300" />

@@ -1,18 +1,56 @@
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Button from "../../components/button";
 import Input from "../../components/input";
-
-const inputs = [
-  {
-    placeholder: "Email",
-    type: "text",
-  },
-  {
-    placeholder: "Senha",
-    type: "text",
-  },
-];
+import Modal from "../../components/modal";
+import { createState } from "../../utils/state";
 
 export default function Index() {
+  const router = useRouter();
+  const modal = Modal();
+  const inputs = [
+    {
+      placeholder: "Email",
+      type: "email",
+      state: createState(""),
+    },
+    {
+      placeholder: "Senha",
+      type: "password",
+      state: createState(""),
+    },
+  ];
+  const checkIfisLogged = async () => {
+    try {
+      const response = await axios.get("/api/auth/login");
+
+      if (response.data.data.email) {
+        router.push("/");
+      }
+    } catch (e) {
+      // just continue
+    }
+  };
+  const send = async () => {
+    try {
+      const response = await axios.post("/api/auth/login", {
+        email: inputs[0].state.value,
+        password: inputs[1].state.value,
+      });
+
+      if (response.status === 200) {
+        router.reload();
+      }
+    } catch (e) {
+      modal.showModal("Invalid Credentials");
+    }
+  };
+
+  useEffect(() => {
+    checkIfisLogged();
+  }, []);
+
   return (
     <div className="flex justify-center items-center">
       <div className="p-8 h-fit">
@@ -35,8 +73,9 @@ export default function Index() {
           ))}
         </div>
         <div className="justify-center items-center flex">
-          <Button label="Login" />
+          <Button label="Login" click={() => send()} />
         </div>
+        {modal.element}
       </div>
     </div>
   );

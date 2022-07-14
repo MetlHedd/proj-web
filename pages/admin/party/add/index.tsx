@@ -1,78 +1,128 @@
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import Button from "../../../../components/button";
+import Input from "../../../../components/input";
+import Modal from "../../../../components/modal";
+import onlyAccesIfLoggedIn from "../../../../utils/onlyLogged";
+import { createState } from "../../../../utils/state";
+
+function InputDiv({ placeholder, type, state }) {
+  return (
+    <div className="flex flex-col gap-2 grow">
+      <div className="text-white text-xl">{placeholder}:</div>
+      <div>
+        <Input placeholder={placeholder} type={type} state={state} />
+      </div>
+    </div>
+  );
+}
 
 export default function Add() {
+  const router = useRouter();
+  const inputs = [
+    {
+      placeholder: "Nome do rolê",
+      type: "text",
+      state: createState(""),
+    },
+    {
+      placeholder: "Descricao do rolê",
+      type: "text",
+      state: createState(""),
+    },
+    {
+      placeholder: "Imagem do rolê",
+      type: "text",
+      state: createState(""),
+    },
+    {
+      placeholder: "Tags (separada por virgula)",
+      type: "text",
+      state: createState(""),
+    },
+    {
+      placeholder: "Lineup (separada por virgula)",
+      type: "text",
+      state: createState(""),
+    },
+    {
+      placeholder: "Data",
+      type: "date",
+      state: createState(""),
+    },
+    {
+      placeholder: "Horário",
+      type: "text",
+      state: createState(""),
+    },
+    {
+      placeholder: "Local",
+      type: "text",
+      state: createState(""),
+    },
+    {
+      placeholder: "Preço",
+      type: "number",
+      state: createState(""),
+    },
+    {
+      placeholder: "Tickets disponíveis",
+      type: "text",
+      state: createState(""),
+    },
+  ];
+  const modal = Modal();
+
+  const send = async () => {
+    try {
+      const response = await axios.post("/api/party/add", {
+        name: inputs[0].state.value,
+        description: inputs[1].state.value,
+        image: inputs[2].state.value,
+        tags: inputs[3].state.value,
+        lineup: inputs[4].state.value,
+        date: inputs[5].state.value,
+        hours: inputs[6].state.value,
+        address: inputs[7].state.value,
+        price: inputs[8].state.value,
+        ticketsAvalaible: inputs[9].state.value,
+      });
+
+      router.push(`/party/${response.data.data.name}`);
+    } catch (e) {
+      modal.showModal(JSON.stringify(e.response.data));
+    }
+  };
+  onlyAccesIfLoggedIn(true);
+
   return (
     <div className="flex flex-col justify-center items-center p-8 w-full">
       <div className="p-8 flex flex-col gap-4 w-full">
         <div className="text-white text-4xl text-center">Adicionar rolê</div>
-        <div className="border border-dashed w-32 h-32 text-white font-bold text-xl rounded-full flex self-center justify-self-center">
-          <div className="self-center justify-self-center grow text-center">
-            Adicionar foto
-          </div>
+        <div className="flex flex-row w-full gap-12">
+          <InputDiv {...inputs[0]} />
+          <InputDiv {...inputs[1]} />
+          <InputDiv {...inputs[2]} />
         </div>
         <div className="flex flex-row w-full gap-12">
-          <div className="flex flex-col gap-2 grow">
-            <div className="text-white text-xl">Nome do rolê:</div>
-            <div>
-              <input
-                type="text"
-                placeholder="Nome"
-                className="p-2 rounded border-2 w-full"
-                style={{ borderColor: "#5e17eb" }}
-              />
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 grow">
-            <div className="text-white text-xl">Descricao do role:</div>
-            <div>
-              <input
-                type="text"
-                placeholder="Descricao"
-                className="p-2 rounded border-2 w-full"
-                style={{ borderColor: "#5e17eb" }}
-              />
-            </div>
-          </div>
+          <InputDiv {...inputs[3]} />
+          <InputDiv {...inputs[4]} />
         </div>
         <div className="flex flex-row w-full gap-12">
-          <div className="flex flex-col gap-2 grow">
-            <div className="text-white text-xl">Tags:</div>
-            <div>
-              <input
-                type="text"
-                placeholder="Nome"
-                className="p-2 rounded border-2 w-full"
-                style={{ borderColor: "#5e17eb" }}
-              />
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 grow">
-            <div className="text-white text-xl">Data:</div>
-            <div>
-              <input
-                type="text"
-                placeholder="Descricao"
-                className="p-2 rounded border-2 w-full"
-                style={{ borderColor: "#5e17eb" }}
-              />
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 grow">
-            <div className="text-white text-xl">Local:</div>
-            <div>
-              <input
-                type="text"
-                placeholder="Descricao"
-                className="p-2 rounded border-2 w-full"
-                style={{ borderColor: "#5e17eb" }}
-              />
-            </div>
-          </div>
+          <InputDiv {...inputs[5]} />
+          <InputDiv {...inputs[6]} />
+          <InputDiv {...inputs[7]} />
+        </div>
+        <div className="flex flex-row w-full gap-12">
+          <InputDiv {...inputs[8]} />
+          <InputDiv {...inputs[9]} />
         </div>
         <div className="text-xl font-bold self-center justify-self-center">
-          <Button label="Adicionar" />
+          <Button label="Adicionar" click={send} />
         </div>
       </div>
+      {modal.element}
     </div>
   );
 }

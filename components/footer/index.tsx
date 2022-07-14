@@ -1,22 +1,8 @@
+import axios from "axios";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import Links from "./links";
 
-const leftLinks = {
-  links: [
-  {
-    href: "/party/1",
-    label: "Rolê 1",
-  },
-  {
-    href: "/party/2",
-    label: "Rolê 2",
-  },
-  {
-    href: "/party/3",
-    label: "Rolê 3",
-  }],
-  title: "Principais rolês"
-};
 const rightLinks = {
   links: [
   {
@@ -35,6 +21,35 @@ const rightLinks = {
 };
 
 export default function Footer() {
+  const [parties, setParties] = useState([]);
+
+  useEffect(() => {
+    const asyncFunc = async () => {
+      try {
+        const response = await axios.post("/api/party/getAll");
+        const receivedData = [];
+        let index = 0;
+
+        for (const party of response.data.data) {
+          receivedData.push({
+            label: party.name,
+            href: `/party/${party.name}`,
+          });
+
+          index++;
+
+          if (index == 2) {
+            break;
+          }
+        }
+
+        setParties(receivedData);
+      } catch (e) {}
+    };
+
+    asyncFunc();
+  }, []);
+
   return (
     <footer className="text-white text-center p-12 bg-black">
       <div className="flex justify-center items-center">
@@ -53,7 +68,7 @@ export default function Footer() {
         </div>
         <div className="grow">
           <div className="flex gap-8 justify-center items-center">
-            <Links {...leftLinks} />
+            <Links title="Principais rolês" links={parties} />
             <Links {...rightLinks} />
           </div>
         </div>

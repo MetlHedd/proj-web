@@ -89,7 +89,7 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 
 ## Plano de Testes
 
-<p>Foi realiazado testes manuais de qualidade acerca das funcionalidades oferecida pelo site.</p>
+<p>Foi realizado testes manuais de qualidade acerca das funcionalidades oferecida pelo site.</p>
 
 ## Resultados dos Testes
 

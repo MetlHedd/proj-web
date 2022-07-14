@@ -14,23 +14,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === "POST") {
     try {
       const cookies = cookie.parse(req.headers.cookie || "");
-      const decodedCookie = checkCookie(cookies.token || "");
 
-      if (decodedCookie.admin) {
-        await DbConnect();
+      await DbConnect();
 
-        const body: Body = req.body;
-        const data = await PartySchema.findOne({
-          name: body.name,
-        });
+      const body: Body = req.body;
+      const data = await PartySchema.findOne({
+        name: body.name,
+      });
 
-        res.status(200).json({
-          status: "ok",
-          data,
-        });
+      res.status(200).json({
+        status: "ok",
+        data,
+      });
 
-        return;
-      }
+      return;
     } catch (e) {
       error = e;
     }

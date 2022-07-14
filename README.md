@@ -113,7 +113,9 @@ podman-compose up -d
 npm run dev
 ```
 
-A aplicação poderá ser acessada com a url `http://localhost:8830`.
+A aplicação poderá ser acessada com a url `http://localhost:3000`, para ter dados inicias a rota `http://localhost:3000/api/hello` foi disponibilizada, com o seguinte usuário admin inicial:
+- email: `admin@role.com`
+- senha: `123`
 
 ## Problemas
 

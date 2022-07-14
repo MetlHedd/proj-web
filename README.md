@@ -91,12 +91,9 @@ Trabalho da disciplina SCC0219 Introdução ao Desenvolvimento Web
 
 <p>Foi realiazado testes manuais de qualidade acerca das funcionalidades oferecida pelo site.</p>
 
-![image](https://user-images.githubusercontent.com/45900493/179062612-da1bc638-2199-4f74-9f15-888e1772e6c0.png)
-
-
 ## Resultados dos Testes
 
-<p>Em breve.</p>
+![image](https://user-images.githubusercontent.com/45900493/179062612-da1bc638-2199-4f74-9f15-888e1772e6c0.png)
 
 ## Procedimentos de Build
 

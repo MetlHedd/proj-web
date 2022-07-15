@@ -24,10 +24,13 @@ export default function Ticket({ qrCode, image, title, id }: Props) {
 
   const transfer = async () => {
     try {
-      const response = await axios.post("/api/user/transferTicket", {
+      const response = await axios.post("/api/user/transfer", {
         id: id,
         newEmail: transfertTicketInput.state.value,
       });
+      console.log({id: id,
+        newEmail: transfertTicketInput.state.value});
+      console.log(response);
 
       if (response.status === 200) {
         router.reload();
